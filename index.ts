@@ -1,0 +1,1 @@
+let firstname : string = 'chloe';
