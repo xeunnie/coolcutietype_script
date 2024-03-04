@@ -54,3 +54,83 @@ let school:{
 }
 school.score[4.5] = false;
 school.friend = ['Lee' , school.teacher]
+
+//function, parameter, return
+function fx1(x: number): number{ //타입 지정은 여기서만 가능 1number는 파라미터, 2number는 리턴값 타입지정
+    return x * 2
+}
+fx1(2);
+function fxVoid(x: number): void{ 
+    1+1 //리턴 쓰기 싫은 함수에 넣으면 됨
+}
+fx1(2); //여기에 파라미터 안쓰면 에러남
+function fx2(x?: number): void{ //물음표 치는 것은 (number|undefined) 똑같음
+}
+fx2;
+//narrowing
+function fx3(x: number | string){
+    if(typeof x === 'string'){
+        return x + 1
+    } else {
+        return x + 1
+    }
+}
+function fx4(x: number|string){
+    let array2: number[] = [];
+    if(typeof x === 'number'){//타입을 특정지을 수만 있다면 다 인정해줌
+        array2[0] = x;
+    }
+}
+//type assertion
+function fx5(x: number|string){
+    let array3 : number[] = [];
+    array3[0] = x as number;
+}
+
+//practice
+function sayHi(x?: string){
+    if(x){
+        console.log('hello' + x)
+    } else {
+        console.log('no name')
+    }
+}
+function lettercounter(x: number|string): number{
+    return x.toString().length
+}
+function passCheck(test1: number, test2: boolean, test3: string):string|void{
+    let grade: number = 0;
+    grade += test1;
+    if(test2 === true){
+        grade+= 500
+    }
+    if(test3 === 'excellent'){
+        grade +=100
+    }
+    if (grade >= 600){
+        return 'pass'
+    }
+}
+//practice
+function cleaningfx(a:(number|string)[]){ //파라미터로 어래이 가능하게
+    let cleaned: number[] = []; // 클리닝 완료된 변수 작명
+    a.forEach((b)=>{ //어래이 반복문을 위한 포위치
+        if(typeof b === 'string') { //반복문 돌리면 어래이 안에 있던 자료가 b라는 파람으로 나옴
+            cleaned.push(parseFloat(b)) // 스트링이면 숫자로 파싱하고 푸시
+        } else {
+            cleaned.push(b) //숫자면 그냥 푸시
+        }
+    })
+    return cleaned
+}
+console.log(cleaningfx([123,'3']))
+function fx6( x: {subject: string|string[]}){
+    if(typeof x.subject === 'string'){
+        return x.subject
+    } else if (Array.isArray(x.subject)){ //변수가 어래이인지 확인하려면 typeof는 못쓰고 Array.isArray()이거나 다른 방법 써야함
+        return x.subject[x.subject.length -1]
+    } else {
+        return 'none'
+    }
+}
+console.log( fx6({ subject: ['english', 'art']}))
