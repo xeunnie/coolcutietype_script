@@ -134,3 +134,5 @@ function fx6( x: {subject: string|string[]}){
     }
 }
 console.log( fx6({ subject: ['english', 'art']}))
+
+//type alias
