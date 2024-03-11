@@ -136,3 +136,35 @@ function fx6( x: {subject: string|string[]}){
 console.log( fx6({ subject: ['english', 'art']}))
 
 //type alias
+let animal: string | number | undefined;
+//이렇게 타입이 길때 쓰는 것, type alias는 대문자로 시작함
+type Animal = string | number | undefined;
+let animals : Animal = 123;
+//union타입 외에도 object 타입도 가능
+type Member = { name?: string, age: number }
+//오브젝트 속성 안에도 ?넣기 가능
+let member3: Member = { name  : 'choi', age : 20 }
+//readonly
+const born = {region : 'Gumi' };
+born.region = 'Gwacheon'
+//const 변수는 등호로 재할당만 막는 역할로, const로 담은 object 수정은 자유롭게 가능함
+//내부 속성을 잠그는 방법 : readonly
+type Born = { 
+    readonly region : string
+}
+const born1 : Born = {
+    region : 'Gumi'
+}
+// born1.region = 'Gwacheon'
+//에러 발생, 실제 변환된 자바스크립트 파일에는 에러가 없음, 에디터와 터미널에서만 존재함
+
+//타입 alias 합치기
+type Name = string;
+type Age = number;
+type Person = Name | Age; //유니언 타입으로 합치기 가능
+//&연산자로 오브젝트 합치기, object 타입 extend 하기
+type PositionX = { x : number };
+type PositionY = { y : number };
+type NewType = PositionX & PositionY;
+let position : NewType = { x : 10, y : 20}
+// 참고로 같은 이름의 type변수는 재정의가 불가능, 좀 더 엄격하게 사용 가능
