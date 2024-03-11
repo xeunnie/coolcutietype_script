@@ -86,7 +86,6 @@ function fx5(x: number|string){
     let array3 : number[] = [];
     array3[0] = x as number;
 }
-
 //practice
 function sayHi(x?: string){
     if(x){
@@ -168,3 +167,14 @@ type PositionY = { y : number };
 type NewType = PositionX & PositionY;
 let position : NewType = { x : 10, y : 20}
 // 참고로 같은 이름의 type변수는 재정의가 불가능, 좀 더 엄격하게 사용 가능
+
+//literal types
+let seungeun : 'choi' | 'chloe'
+seungeun : 'chloe';
+function fx7(a:'hi') : (1|0){ //(1|0) 이 부분은 리턴 타입 설정
+    return 1
+}
+//practice
+function fxRock(a:''){
+
+}
