@@ -175,6 +175,16 @@ function fx7(a:'hi') : (1|0){ //(1|0) 이 부분은 리턴 타입 설정
     return 1
 }
 //practice
-function fxRock(a:''){
+function fxRock(a: 'scissors' | 'rock' | 'paper' ) : ( 'scissors' | 'rock' | 'paper') []{
+    return ['scissors']
+}
+// literal type vs const
+var data = {
+    name : 'chloe' //타입이 문자라는 것만 설정
+} as const 
+data.name //'chloe'
+function fx8(a: 'chloe'){ //클로이라는 타입만 들어올 수 있음
 
 }
+// fx8(data.name) //이건 에러가 남. 함수 안에 들어올 수 있는건 클로이만 되는 것
+fx8(data.name) //as const를 붙이는 순간 에러가 사라짐
