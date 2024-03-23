@@ -2,5 +2,6 @@
     "compilerOptions": {
         "target": "es5", //어떤 버전의 자바스크립트로 바꿀지 정하는 부분 esnext도 가능하댠댜
         "module": "commonjs", // 자바스크립트 파일간 import문법 구현할 때 어떤 문법 쓸지 정하는 곳(commonjs는 require문법, es2015,esnext는 import 문법, IE 호환성 생각하면 es5랑 commonjs가 와따)
+        "strict": true // 가끔 null타입이 들어올 때 엄격하게 체크해주세요
     }
 }
