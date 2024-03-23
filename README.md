@@ -1,1 +1,2 @@
-record of basic typescript learnings while watching lectures :)
+# Typescript Practice
+record of basic typescript learnings and practicing type uses :)
