@@ -242,3 +242,73 @@ for (let i = 0; i < 3; i++){
         a.href = 'https://bbc.com'
     }
 }
+
+// class
+class villager{
+    name:string;//필드값 지정하는 것 이 부분이 ts와 js의 차이점
+    species:string;
+    popularity:number;
+    constructor(name: string, species:string, popularity:number){
+        this.name = name;
+        this.species = species;
+        this.popularity = popularity;
+    }
+    vote() : number{
+        return this.popularity * 100
+    }
+}
+let Flurry = new villager('Flurry', 'Hamster', 10)
+console.log(Flurry)
+console.log(Flurry.vote())
+
+//practice
+class Word{
+    num;
+    str;
+    constructor(...param : (number | string)[] ){
+      let Num :number[] = [];
+      let Str :string[] = [];
+  
+      param.forEach((i)=>{
+        if (typeof i ==='string') {
+            Str.push(i)
+        } else {
+            Num.push(i)
+        }
+      })
+      this.num = Num;
+      this.str = Str;
+    }
+  }
+  let obj = new Word('choi', 3, 5, 'lee');
+  console.log(obj.num); //[3,5]
+  console.log(obj.str);//['choi', 'lee'] 
+
+  //interface
+interface NPC {
+    name: string
+}
+interface Villager extends NPC {
+    species: string
+}
+let Marina : Villager = { name : 'Marina', species: 'Octopus'}
+let TomNook : NPC = { name : 'Tom Nook'}
+
+type Furniture = { name : string }
+type Miscellanneous = { cost : number} & Furniture
+let AromaPot : Miscellanneous = {name : 'Aroma Pot', cost : 600}
+
+//practice
+interface MathObj {
+    plus : (a:number, b:number) => number,
+    minus : (a:number, b:number) => number
+  }
+  
+  let obj1 :MathObj = {
+    plus(a,b){
+      return a + b
+    },
+    minus(a,b){
+      return a - b
+    }
+  }
