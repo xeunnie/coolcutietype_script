@@ -188,3 +188,57 @@ function fx8(a: 'chloe'){ //클로이라는 타입만 들어올 수 있음
 }
 // fx8(data.name) //이건 에러가 남. 함수 안에 들어올 수 있는건 클로이만 되는 것
 fx8(data.name) //as const를 붙이는 순간 에러가 사라짐
+
+//HTML 조작
+let title = document.querySelector('#title');
+// title?.innerHTML = 'Hi' html 요소가 union type이라 변경해야함
+// narrowing 방법1.
+let title1 = document.querySelector('#title');
+if (title != null){
+    title.innerHTML = 'Hi'
+}
+// narrowing 방법2. instanceof 연산자
+let title2 = document.querySelector('#title');
+if (title instanceof Element){
+    title.innerHTML = 'Hi'
+}
+// narrowing 방법3. as로 사기치기
+let title3 = document.querySelector('#title') as Element;
+if (title != null){
+    title.innerHTML = 'Hi'
+}
+// narrowing 방법4. 오브젝트에 ?.붙이기
+let title4 = document.querySelector('#title') as Element;
+if (title?.innerHTML != undefined){ //title에 innerHtml있으면 출력해주고, 없으면 undefined 출력해줌
+    title.innerHTML = 'Hi'
+}
+//link 바꾸기
+let link = document.querySelector('.link');
+if (link instanceof HTMLAnchorElement) {
+    link.href = 'https://abc.com'
+} // Element 타입으로 지정하면 에러가 남. 어떤 element인지 적어줘야함
+
+// eventListener 붙이기
+let btn = document.querySelector('#button');
+btn?.addEventListener('click', function(){
+    // button에 addEventListener 가능하면 붙여주고 아니면 undefined로 남기기
+})
+
+//practice
+let img = document.querySelector('#image');
+if (img instanceof HTMLImageElement){
+    img.src = 'change.jpeg'
+}
+let link1 = document.querySelectorAll('.abc');
+link1.forEach((a)=>{
+    if( a instanceof HTMLAnchorElement){
+        a.href = 'https://abc.com'
+    }
+})
+let link2 = document.querySelectorAll('.bbc');
+for (let i = 0; i < 3; i++){
+    let a = link2[i];
+    if(a instanceof HTMLAnchorElement){
+        a.href = 'https://bbc.com'
+    }
+}
